@@ -1,4 +1,4 @@
-import { Header } from "@components/ui";
+import { Footer, Header } from "@components/ui";
 import type { Metadata } from "next";
 import { Ubuntu } from "next/font/google";
 import "./globals.css";
@@ -17,9 +17,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className + 'overflow-x-hidden'}>
-        <Header />
-        {children}
+      <body className={inter.className}>
+        <main className="bg-neutral-100 h-screen w-screen overflow-x-hidden relative">
+          <Header />
+          {children}
+          <Footer />
+        </main>
       </body>
     </html>
   );
