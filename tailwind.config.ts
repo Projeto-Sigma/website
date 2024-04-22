@@ -12,9 +12,14 @@ const config: Config = {
         primary: '#094D56',
         secondary: '#EDF2F7',
         neutral: {
-          100: '#f7f7f7',
+          100: '#fff',
+          90: '#f7fafc',
+          50: '#718096',
           0: '#2D3748'
         }
+      },
+      boxShadow: {
+        base: '0 0 8px 0 rgba(0, 0, 0, 0.2)'
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",

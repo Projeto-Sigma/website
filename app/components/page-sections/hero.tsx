@@ -1,10 +1,10 @@
-import { CallToActions, PageSection } from "@components/common"
+import { CallToActions, PageSection, PageSectionContent } from "@components/common"
 import Image from "next/image"
 import React from "react"
 
 export const Hero: React.FC = () => {
     return <PageSection>
-        <div className="flex gap-16">
+        <PageSectionContent className="gap-16 m-auto">
             <div className="flex flex-col gap-20 h-full">
                 <div className="flex-col">
                     <h1 className="font-bold text-neutral-0 text-6xl">Lorem ipsum dolor sit amet consectet</h1>
@@ -13,6 +13,6 @@ export const Hero: React.FC = () => {
                 <CallToActions />
             </div>
             <Image src="/preview.png" alt="Video Demonstração" width={565} height={500} />
-        </div>
+        </PageSectionContent>
     </PageSection>
 }
