@@ -1,4 +1,4 @@
-import { Hero, Modules, SuccessCase } from "@components/page-sections";
+import { Contact, Hero, Modules, SuccessCase } from "@components/page-sections";
 
 export default function Home() {
   return (
@@ -6,6 +6,7 @@ export default function Home() {
       <Hero />
       <Modules />
       <SuccessCase />
+      <Contact />
     </main>
   );
 }
