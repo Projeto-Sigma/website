@@ -1,12 +1,13 @@
-import { Contact, Hero, Modules, SuccessCase } from "@components/page-sections";
+import { createClient } from "@prismicio/client";
+import { SliceZone } from "@prismicio/react";
+import { repositoryName } from "../prismicio";
+import { components } from "../slices";
 
-export default function Home() {
+export default async function Home() {
+  const client = createClient(repositoryName)
+  const home = await client.getSingle("homepage")
+
   return (
-    <>
-      <Hero />
-      <Modules />
-      <SuccessCase />
-      <Contact />
-    </>
+    <SliceZone slices={home.data.slices} components={components} />
   );
 }

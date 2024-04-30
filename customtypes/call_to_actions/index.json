@@ -1,0 +1,33 @@
+{
+  "format": "custom",
+  "id": "call_to_actions",
+  "label": "Call to Action",
+  "repeatable": true,
+  "status": true,
+  "json": {
+    "Main": {
+      "uid": {
+        "config": {
+          "label": "UID"
+        },
+        "type": "UID"
+      },
+      "link": {
+        "type": "Link",
+        "config": {
+          "label": "link",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "select": null
+        }
+      },
+      "text": {
+        "type": "Text",
+        "config": {
+          "label": "text",
+          "placeholder": ""
+        }
+      }
+    }
+  }
+}
