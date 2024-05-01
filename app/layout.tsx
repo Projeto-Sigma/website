@@ -1,6 +1,6 @@
-import { Footer, Header } from "@components/ui";
 import type { Metadata } from "next";
 import { Ubuntu } from "next/font/google";
+import { Footer, Header } from "./components/prismic";
 import "./globals.css";
 
 const inter = Ubuntu({ weight: ['300', '400', '500', '700'], subsets: ['latin'] });

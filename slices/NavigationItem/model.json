@@ -1,8 +1,8 @@
 {
-  "id": "modules",
+  "id": "navigation_item",
   "type": "SharedSlice",
-  "name": "Modules",
-  "description": "Modules",
+  "name": "NavigationItem",
+  "description": "NavigationItem",
   "variations": [
     {
       "id": "default",
@@ -12,41 +12,40 @@
       "description": "Default",
       "imageUrl": "",
       "primary": {
-        "title": {
+        "name": {
           "type": "StructuredText",
           "config": {
-            "label": "Title",
+            "label": "Name",
             "placeholder": "",
             "allowTargetBlank": true,
             "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+          }
+        },
+        "link": {
+          "type": "Link",
+          "config": {
+            "label": "Link",
+            "placeholder": "",
+            "select": null
           }
         }
       },
       "items": {
-        "module_image": {
-          "type": "Image",
-          "config": {
-            "label": "Module Image",
-            "constraint": {},
-            "thumbnails": []
-          }
-        },
-        "module_name": {
+        "child_name": {
           "type": "StructuredText",
           "config": {
-            "label": "Module Name",
+            "label": "Child Name",
             "placeholder": "",
             "allowTargetBlank": true,
             "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
           }
         },
-        "module_description": {
-          "type": "StructuredText",
+        "child_link": {
+          "type": "Link",
           "config": {
-            "label": "Module Description",
+            "label": "Child Link",
             "placeholder": "",
-            "allowTargetBlank": true,
-            "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+            "select": null
           }
         }
       }

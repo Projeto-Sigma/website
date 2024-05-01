@@ -116,22 +116,89 @@ export type HomepageDocument<Lang extends string = string> =
     Lang
   >;
 
-export type AllDocumentTypes = CallToActionsDocument | HomepageDocument;
+/**
+ * Content for Logo documents
+ */
+interface LogoDocumentData {
+  /**
+   * Logo field in *Logo*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: logo.logo
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  logo: prismic.ImageField<never>;
+}
+
+/**
+ * Logo document from Prismic
+ *
+ * - **API ID**: `logo`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type LogoDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<Simplify<LogoDocumentData>, "logo", Lang>;
+
+type NavigationDocumentDataSlicesSlice = NavigationItemSlice;
+
+/**
+ * Content for Navigation documents
+ */
+interface NavigationDocumentData {
+  /**
+   * Name field in *Navigation*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: navigation.name
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  name: prismic.RichTextField;
+
+  /**
+   * Slice Zone field in *Navigation*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: navigation.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#slices
+   */
+  slices: prismic.SliceZone<NavigationDocumentDataSlicesSlice>;
+}
+
+/**
+ * Navigation document from Prismic
+ *
+ * - **API ID**: `navigation`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type NavigationDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<
+    Simplify<NavigationDocumentData>,
+    "navigation",
+    Lang
+  >;
+
+export type AllDocumentTypes =
+  | CallToActionsDocument
+  | HomepageDocument
+  | LogoDocument
+  | NavigationDocument;
 
 /**
  * Primary content in *Contact → Primary*
  */
 export interface ContactSliceDefaultPrimary {
-  /**
-   * Contact Image field in *Contact → Primary*
-   *
-   * - **Field Type**: Image
-   * - **Placeholder**: *None*
-   * - **API ID Path**: contact.primary.contact_image
-   * - **Documentation**: https://prismic.io/docs/field#image
-   */
-  contact_image: prismic.ImageField<never>;
-
   /**
    * Title field in *Contact → Primary*
    *
@@ -321,6 +388,48 @@ export type HighlightsSlice = prismic.SharedSlice<
 >;
 
 /**
+ * Primary content in *Logo → Primary*
+ */
+export interface LogoSliceDefaultPrimary {
+  /**
+   * Logo field in *Logo → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: logo.primary.logo
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  logo: prismic.ImageField<never>;
+}
+
+/**
+ * Default variation for Logo Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type LogoSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<LogoSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *Logo*
+ */
+type LogoSliceVariation = LogoSliceDefault;
+
+/**
+ * Logo Shared Slice
+ *
+ * - **API ID**: `logo`
+ * - **Description**: Logo
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type LogoSlice = prismic.SharedSlice<"logo", LogoSliceVariation>;
+
+/**
  * Primary content in *Modules → Primary*
  */
 export interface ModulesSliceDefaultPrimary {
@@ -368,16 +477,6 @@ export interface ModulesSliceDefaultItem {
    * - **Documentation**: https://prismic.io/docs/field#rich-text-title
    */
   module_description: prismic.RichTextField;
-
-  /**
-   * Module Link field in *Modules → Items*
-   *
-   * - **Field Type**: Link
-   * - **Placeholder**: *None*
-   * - **API ID Path**: modules.items[].module_link
-   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
-   */
-  module_link: prismic.LinkField;
 }
 
 /**
@@ -410,6 +509,86 @@ export type ModulesSlice = prismic.SharedSlice<
   ModulesSliceVariation
 >;
 
+/**
+ * Primary content in *NavigationItem → Primary*
+ */
+export interface NavigationItemSliceDefaultPrimary {
+  /**
+   * Name field in *NavigationItem → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: navigation_item.primary.name
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  name: prismic.RichTextField;
+
+  /**
+   * Link field in *NavigationItem → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: navigation_item.primary.link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  link: prismic.LinkField;
+}
+
+/**
+ * Primary content in *NavigationItem → Items*
+ */
+export interface NavigationItemSliceDefaultItem {
+  /**
+   * Child Name field in *NavigationItem → Items*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: navigation_item.items[].child_name
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  child_name: prismic.RichTextField;
+
+  /**
+   * Child Link field in *NavigationItem → Items*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: navigation_item.items[].child_link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  child_link: prismic.LinkField;
+}
+
+/**
+ * Default variation for NavigationItem Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type NavigationItemSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<NavigationItemSliceDefaultPrimary>,
+  Simplify<NavigationItemSliceDefaultItem>
+>;
+
+/**
+ * Slice variation for *NavigationItem*
+ */
+type NavigationItemSliceVariation = NavigationItemSliceDefault;
+
+/**
+ * NavigationItem Shared Slice
+ *
+ * - **API ID**: `navigation_item`
+ * - **Description**: NavigationItem
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type NavigationItemSlice = prismic.SharedSlice<
+  "navigation_item",
+  NavigationItemSliceVariation
+>;
+
 declare module "@prismicio/client" {
   interface CreateClient {
     (
@@ -425,6 +604,11 @@ declare module "@prismicio/client" {
       HomepageDocument,
       HomepageDocumentData,
       HomepageDocumentDataSlicesSlice,
+      LogoDocument,
+      LogoDocumentData,
+      NavigationDocument,
+      NavigationDocumentData,
+      NavigationDocumentDataSlicesSlice,
       AllDocumentTypes,
       ContactSlice,
       ContactSliceDefaultPrimary,
@@ -438,11 +622,20 @@ declare module "@prismicio/client" {
       HighlightsSliceDefaultPrimary,
       HighlightsSliceVariation,
       HighlightsSliceDefault,
+      LogoSlice,
+      LogoSliceDefaultPrimary,
+      LogoSliceVariation,
+      LogoSliceDefault,
       ModulesSlice,
       ModulesSliceDefaultPrimary,
       ModulesSliceDefaultItem,
       ModulesSliceVariation,
       ModulesSliceDefault,
+      NavigationItemSlice,
+      NavigationItemSliceDefaultPrimary,
+      NavigationItemSliceDefaultItem,
+      NavigationItemSliceVariation,
+      NavigationItemSliceDefault,
     };
   }
 }

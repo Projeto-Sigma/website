@@ -23,6 +23,7 @@ const Highlights = async ({ slice }: HighlightsProps): Promise<JSX.Element> => {
     <section
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
+      id="destaques"
     >
       <PageSection>
         <PageSectionContent className="gap-16 m-auto">
@@ -32,7 +33,7 @@ const Highlights = async ({ slice }: HighlightsProps): Promise<JSX.Element> => {
               <Tag>
                 {slice.primary.tag_text}
               </Tag>
-              <RichText field={slice.primary.title} />
+              <RichText field={slice.primary.title} className="text-neutral-0 w-full" />
             </div>
             <CallToActions className="justify-end">
               <Link field={cta.data.link}>

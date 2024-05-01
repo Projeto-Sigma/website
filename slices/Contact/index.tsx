@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/alt-text */
 import { PageSection, PageSectionContent } from "@app//components/common";
-import { Image, SectionTitle } from "@app//components/prismic";
+import { SectionTitle } from "@app//components/prismic";
 import { Button, Input, TextArea } from "@app//components/ui";
 import { Content } from "@prismicio/client";
 import { SliceComponentProps } from "@prismicio/react";
@@ -35,9 +35,10 @@ const Contact = ({ slice }: ContactProps): JSX.Element => {
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
       className="flex w-full"
+      id="contato"
     >
-      <PageSection className="bg-neutral-90 max-w-2xl">
-        <PageSectionContent className="gap-16 flex-col ">
+      <PageSection className="bg-neutral-90">
+        <PageSectionContent className="gap-16 flex-col">
           <SectionTitle title={slice.primary.title} subtitle={slice.primary.subtitle} />
           <form>
             <div className="flex flex-wrap gap-3">
@@ -50,7 +51,6 @@ const Contact = ({ slice }: ContactProps): JSX.Element => {
           </form>
         </PageSectionContent>
       </PageSection>
-      <Image field={slice.primary.contact_image} className="w-1/3 h-full object-cover" />
     </section >
   );
 };

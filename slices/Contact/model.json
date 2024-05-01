@@ -12,14 +12,6 @@
       "description": "Default",
       "imageUrl": "",
       "primary": {
-        "contact_image": {
-          "type": "Image",
-          "config": {
-            "label": "Contact Image",
-            "constraint": {},
-            "thumbnails": []
-          }
-        },
         "title": {
           "type": "StructuredText",
           "config": {

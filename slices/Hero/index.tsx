@@ -27,7 +27,7 @@ const Hero = async ({ slice }: HeroProps): Promise<JSX.Element> => {
         <PageSectionContent className="gap-16 m-auto">
           <div className="flex flex-col gap-20 h-full">
             <div className="flex-col">
-              <RichText field={slice.primary.title} />
+              <RichText field={slice.primary.title} className="text-neutral-0" />
               <p className="font-normal text-neutral-0 text-2xl">{slice.primary.description}</p>
             </div>
             <CallToActions>
