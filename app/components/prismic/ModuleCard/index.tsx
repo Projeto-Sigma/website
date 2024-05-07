@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/alt-text */
 import { Image, RichText } from "@components/prismic";
 import React from "react";
 import { IModuleCardProps } from "./types";

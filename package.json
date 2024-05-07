@@ -10,13 +10,19 @@
     "slicemachine": "start-slicemachine"
   },
   "dependencies": {
+    "@hookform/resolvers": "^3.3.4",
     "@prismicio/client": "^7.4.1",
     "@prismicio/next": "^1.5.0",
     "@prismicio/react": "^2.7.4",
+    "@types/nodemailer": "^6.4.15",
     "next": "14.2.2",
+    "nodemailer": "^6.9.13",
     "react": "^18",
     "react-dom": "^18",
-    "react-icons": "^5.2.0"
+    "react-hook-form": "^7.51.3",
+    "react-icons": "^5.2.0",
+    "react-toastify": "^10.0.5",
+    "zod": "^3.23.5"
   },
   "devDependencies": {
     "@slicemachine/adapter-next": "^0.3.38",

@@ -6,4 +6,6 @@ type TButtonTypes = 'button' | 'submit'
 export interface IButtonProps extends HtmlHTMLAttributes<HTMLButtonElement> {
     variant?: TButtonVariants
     type?: TButtonTypes
+    loading?: boolean
+    disabled?: boolean
 }

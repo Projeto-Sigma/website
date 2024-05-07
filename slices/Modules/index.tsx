@@ -21,7 +21,7 @@ const Modules = ({ slice }: ModulesProps): JSX.Element => {
       <PageSection className="bg-neutral-90">
         <PageSectionContent className="gap-16 flex-col">
           <SectionTitle title={slice.primary.title} />
-          <div className="flex flex-wrap gap-8">
+          <div className="grid grid-cols-3 gap-8">
             {slice.items.map((item, index) =>
               <ModuleCard
                 key={index}
